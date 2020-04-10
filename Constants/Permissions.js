@@ -66,8 +66,10 @@ export const Permissions = {
   RespiratoryRate: "RespiratoryRate",
   SleepAnalysis: "SleepAnalysis",
   MenstrualFlow: "MenstrualFlow",
+  RestingHeartRate: "RestingHeartRate",
   StepCount: "StepCount",
   Steps: "Steps",
+  WalkingHeartRateAverage: "WalkingHeartRateAverage",
   Weight: "Weight",
   Workout: "Workout"
 }
