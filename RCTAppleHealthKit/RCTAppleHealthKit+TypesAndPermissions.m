@@ -92,6 +92,10 @@
     // Reproductive Health
     if([@"MenstrualFlow" isEqualToString:key]) {
         return [HKObjectType categoryTypeForIdentifier:HKCategoryTypeIdentifierMenstrualFlow];
+    }else if ([@"SexualActivity" isEqualToString:key]) {
+        return [HKObjectType categoryTypeForIdentifier:HKCategoryTypeIdentifierSexualActivity];
+    }else if ([@"IntermenstrualBleeding" isEqualToString:key]) {
+        return [HKObjectType categoryTypeForIdentifier:HKCategoryTypeIdentifierIntermenstrualBleeding];
     }
     
     // Sleep

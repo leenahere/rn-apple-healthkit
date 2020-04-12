@@ -12,5 +12,7 @@
 @interface RCTAppleHealthKit (Methods_Reproductive)
 
 - (void)reproductive_getMenstrualSamples:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback;
+- (void)reproductive_getSexualActivitySamples:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback;
+- (void)reproductive_getIntermenstrualBleedingSamples:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback;
 
 @end

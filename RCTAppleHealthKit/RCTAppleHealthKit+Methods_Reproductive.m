@@ -43,5 +43,57 @@
     
 }
 
+- (void)reproductive_getSexualActivitySamples:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
+{
+    NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
+    NSDate *endDate = [RCTAppleHealthKit dateFromOptions:input key:@"endDate" withDefault:[NSDate date]];
+    if(startDate == nil){
+        callback(@[RCTMakeError(@"startDate is required in options", nil, nil)]);
+        return;
+    }
+    
+    NSPredicate *predicate = [RCTAppleHealthKit predicateForSamplesBetweenDates:startDate endDate:endDate];
+    NSUInteger limit = [RCTAppleHealthKit uintFromOptions:input key:@"limit" withDefault:HKObjectQueryNoLimit];
+    
+    
+    [self fetchSexualActivitySamplesForPredicate:predicate
+                                          limit:limit
+                                     completion:^(NSArray *results, NSError *error) {
+                                         if(results){
+                                             callback(@[[NSNull null], results]);
+                                             return;
+                                         } else {
+                                             callback(@[RCTJSErrorFromNSError(error)]);
+                                             return;
+                                         }
+                                     }];
+}
+
+- (void)reproductive_getIntermenstrualBleedingSamples:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
+{
+    NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
+    NSDate *endDate = [RCTAppleHealthKit dateFromOptions:input key:@"endDate" withDefault:[NSDate date]];
+    if(startDate == nil){
+        callback(@[RCTMakeError(@"startDate is required in options", nil, nil)]);
+        return;
+    }
+    
+    NSPredicate *predicate = [RCTAppleHealthKit predicateForSamplesBetweenDates:startDate endDate:endDate];
+    NSUInteger limit = [RCTAppleHealthKit uintFromOptions:input key:@"limit" withDefault:HKObjectQueryNoLimit];
+    
+    
+    [self fetchIntermenstrualBleedingSamplesForPredicate:predicate
+                                          limit:limit
+                                     completion:^(NSArray *results, NSError *error) {
+                                         if(results){
+                                             callback(@[[NSNull null], results]);
+                                             return;
+                                         } else {
+                                             callback(@[RCTJSErrorFromNSError(error)]);
+                                             return;
+                                         }
+                                     }];
+}
+
 
 @end

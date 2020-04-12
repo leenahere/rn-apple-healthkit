@@ -135,6 +135,16 @@ RCT_EXPORT_METHOD(getMenstrualFlow:(NSDictionary *)input callback:(RCTResponseSe
     [self reproductive_getMenstrualSamples:input callback:callback];
 }
 
+RCT_EXPORT_METHOD(getSexualActivity:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
+{
+    [self reproductive_getSexualActivitySamples:input callback:callback];
+}
+
+RCT_EXPORT_METHOD(getIntermenstrualBleeding:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
+{
+    [self reproductive_getIntermenstrualBleedingSamples:input callback:callback];
+}
+
 RCT_EXPORT_METHOD(getSamples:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
 {
     [self fitness_getSamples:input callback:callback];
