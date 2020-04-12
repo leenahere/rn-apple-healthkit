@@ -375,6 +375,11 @@
 
                  for (HKCategorySample *sample in results) {
                      NSInteger val = sample.value;
+                     
+                     NSString *usedProtection = @"NO";
+                     if ([[sample metadata][HKMetadataKeySexualActivityProtectionUsed] intValue] == 1) {
+                         usedProtection = @"YES";
+                     }
 
                      NSString *startDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.startDate];
                      NSString *endDateString = [RCTAppleHealthKit buildISO8601StringFromDate:sample.endDate];
@@ -383,7 +388,7 @@
                      
                      switch (val) {
                          case HKCategoryValueNotApplicable:
-                             valueString = [NSString stringWithFormat:@"%d", (int)val];
+                             valueString = @"YES";
                              break;
                         default:
                              valueString = @"UNKNOWN";
@@ -392,6 +397,7 @@
 
                      NSDictionary *elem = @{
                              @"value" : valueString,
+                             @"protection": usedProtection,
                              @"startDate" : startDateString,
                              @"endDate" : endDateString,
                      };
@@ -451,7 +457,7 @@
                      
                      switch (val) {
                          case HKCategoryValueNotApplicable:
-                             valueString = [NSString stringWithFormat:@"%d", (int)val];
+                             valueString = @"YES";
                              break;
                         default:
                              valueString = @"UNKNOWN";
